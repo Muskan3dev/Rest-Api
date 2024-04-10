@@ -1,6 +1,7 @@
 const express = require("express");
+const mongoose = require("mongoose");
 
-const feedRoutes = require("./routes/feed");
+const feedRoutes = require("./Routes/feed.js");
 
 const bodyParser = require("body-parser");
 
@@ -18,4 +19,13 @@ app.use((req, res, next) => {
 
 app.use("/feed", feedRoutes);
 
-app.listen(8080);
+mongoose
+  .connect(
+    "mongodb+srv://muskan:MgZONjF1FvkMLUuK@cluster6.kzpmnit.mongodb.net/messages?retryWrites=true&w=majority&appName=Cluster6"
+  )
+  .then((result) => {
+    app.listen(3000);
+  })
+  .catch((err) => {
+    console.log(err);
+  });
