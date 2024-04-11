@@ -9,7 +9,6 @@ const postSchema = new Schema(
     },
     imageUrl: {
       type: String,
-      required: true,
     },
     content: {
       type: String,
@@ -23,4 +22,4 @@ const postSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("post", postSchema);
+module.exports = mongoose.model("Post", postSchema);
