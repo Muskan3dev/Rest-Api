@@ -3,7 +3,8 @@ const mongoose = require("mongoose");
 const path = require("path");
 const multer = require("multer");
 
-const feedRoutes = require("./Routes/feed.js");
+const feedRoutes = require("./routes/feed.js");
+const authRoutes = require("./routes/auth.js");
 
 const bodyParser = require("body-parser");
 
@@ -46,6 +47,7 @@ app.use((req, res, next) => {
 });
 
 app.use("/feed", feedRoutes);
+app.use("/auth", authRoutes);
 
 app.use((error, req, res, next) => {
   console.log(error);
