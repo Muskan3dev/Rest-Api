@@ -3,7 +3,7 @@ const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
   email: {
-    type: string,
+    type: String,
     required: true,
   },
   password: {
@@ -20,7 +20,7 @@ const userSchema = new Schema({
   },
   posts: [
     {
-      types: Schema.Types.ObjectId,
+      type: Schema.Types.ObjectId,
       ref: "Post",
     },
   ],
