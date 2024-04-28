@@ -8,8 +8,8 @@ exports.signUp = (req, res, next) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
     const error = new Error("Validation failed");
-    err.statusCode = 422;
-    err.data = errors.array();
+    error.statusCode = 422;
+    error.data = errors.array();
     throw error;
   }
   const email = req.body.email;
@@ -61,7 +61,7 @@ exports.login = (req, res, next) => {
           email: loadedUser.email,
           userId: loadedUser._id.toString(),
         },
-        "somesupersecretsecret",
+        process.env.JWT_KEY,
         { expiresIn: "1h" }
       );
       res.status(200).json({ token: token, userId: loadedUser._id.toString() });

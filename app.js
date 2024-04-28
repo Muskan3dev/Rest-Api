@@ -8,6 +8,8 @@ const authRoutes = require("./routes/auth.js");
 
 const bodyParser = require("body-parser");
 
+const MONGODB_URI = `mongodb+srv://${process.env.MONGO_USER}:${process.env.MONGO_PASSWORD}@cluster6.kzpmnit.mongodb.net/?retryWrites=true&w=majority&appName=Cluster6`;
+
 const app = express();
 
 const fileStorage = multer.diskStorage({
@@ -58,9 +60,7 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect(
-    "mongodb+srv://muskan:MgZONjF1FvkMLUuK@cluster6.kzpmnit.mongodb.net/messages?retryWrites=true&w=majority&appName=Cluster6"
-  )
+  .connect(MONGODB_URI)
   .then((result) => {
     app.listen(3000);
   })
