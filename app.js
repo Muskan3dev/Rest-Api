@@ -35,7 +35,10 @@ const fileFilter = (req, file, cb) => {
   ) {
     cb(null, true);
   }
-  cb(null, false);
+  cb(
+    new Error("Invalid file type. Only JPG, JPEG, and PNG files are allowed."),
+    false
+  );
 };
 //application/json parse
 app.use(bodyParser.json());
